@@ -14,12 +14,21 @@ A RESTful API built with Node.js, Express, and MongoDB for managing student reco
 
 ## 🛠️ Tech Stack
 
+### Backend
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB with Mongoose ODM
 - **Authentication**: JWT (JSON Web Tokens)
 - **Password Hashing**: Bcrypt
 - **Validation**: Joi
 - **Development**: Nodemon for auto-restart
+
+### Frontend
+- **Framework**: React 18 with TypeScript
+- **Styling**: Tailwind CSS
+- **Routing**: React Router v6
+- **HTTP Client**: Axios
+- **State Management**: React Context API
+- **Build Tool**: Create React App
 
 ## 📋 Prerequisites
 
@@ -31,6 +40,8 @@ Before running this application, make sure you have the following installed:
 
 ## 🚀 Installation
 
+### Backend Setup
+
 1. **Clone the repository**
 
    ```bash
@@ -38,7 +49,7 @@ Before running this application, make sure you have the following installed:
    cd Student-API
    ```
 
-2. **Install dependencies**
+2. **Install backend dependencies**
 
    ```bash
    npm install
@@ -52,15 +63,53 @@ Before running this application, make sure you have the following installed:
    MONGODB_URI=mongodb://localhost:27017/student-api
    DB_NAME=student-api
    JWT_SECRET=your-secret-key-here
+   FRONTEND_URL=http://localhost:3000
    ```
 
-4. **Start the server**
+4. **Start the backend server**
 
    ```bash
    npm start
    ```
 
    The server will start on `http://localhost:4000`
+
+### Frontend Setup
+
+1. **Navigate to frontend directory**
+
+   ```bash
+   cd frontend
+   ```
+
+2. **Install frontend dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the frontend development server**
+
+   ```bash
+   npm start
+   ```
+
+   The frontend will start on `http://localhost:3000`
+
+### Full Stack Development
+
+To run both backend and frontend simultaneously:
+
+1. **Terminal 1 - Backend:**
+   ```bash
+   npm start
+   ```
+
+2. **Terminal 2 - Frontend:**
+   ```bash
+   cd frontend
+   npm start
+   ```
 
 ## 📚 API Endpoints
 
@@ -137,6 +186,16 @@ Student-API/
 ├── controllers/
 │   ├── studentController.js    # Student CRUD operations
 │   └── userController.js       # User authentication
+├── frontend/                   # React TypeScript frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/         # React components
+│   │   ├── context/           # React context providers
+│   │   ├── pages/             # Application pages
+│   │   ├── services/          # API service layer
+│   │   └── types/             # TypeScript definitions
+│   ├── package.json
+│   └── README.md              # Frontend documentation
 ├── helpers/
 │   ├── bcryptHelper.js         # Password hashing utilities
 │   ├── init-mongodb.js         # MongoDB connection setup

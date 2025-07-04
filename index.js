@@ -1,5 +1,6 @@
 // index.js
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import studentsRoutes from "./routes/api.js";
 import userroutes from "./routes/userroutes.js";
@@ -9,6 +10,12 @@ import createError from "http-errors";
 dotenv.config();
 
 const app = express();
+
+// CORS configuration
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true
+}));
 
 // Middleware to parse JSON requests
 app.use(express.json());
