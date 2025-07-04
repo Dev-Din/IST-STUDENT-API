@@ -4,6 +4,7 @@ A RESTful API built with Node.js, Express, and MongoDB for managing student reco
 
 ## 🚀 Features
 
+### Backend Features
 - **User Authentication**: Secure registration and login with JWT tokens
 - **Student Management**: Full CRUD operations for student records
 - **Data Validation**: Input validation using Joi schema validation
@@ -11,15 +12,33 @@ A RESTful API built with Node.js, Express, and MongoDB for managing student reco
 - **Error Handling**: Comprehensive error handling with proper HTTP status codes
 - **MongoDB Integration**: MongoDB database with Mongoose ODM
 - **Environment Configuration**: Environment variables for secure configuration
+
+### Frontend Features
+- **Modern UI**: Clean and responsive user interface
+- **Authentication Flow**: Login and registration pages with form validation
+- **Dashboard**: Statistics and recent students overview
+- **Student Management**: Complete CRUD interface with search functionality
+- **Real-time Notifications**: Toast notifications for user feedback
+- **Protected Routes**: Secure routing with authentication checks
+- **Responsive Design**: Mobile-friendly interface
  
 ## 🛠️ Tech Stack
 
-- **Backend**: Node.js, Express.js
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express.js
 - **Database**: MongoDB with Mongoose ODM
 - **Authentication**: JWT (JSON Web Tokens)
 - **Password Hashing**: Bcrypt
 - **Validation**: Joi
 - **Development**: Nodemon for auto-restart
+
+### Frontend
+- **Framework**: React 18
+- **Routing**: React Router v6
+- **HTTP Client**: Axios
+- **Notifications**: React Hot Toast
+- **Styling**: Custom CSS with responsive design
 
 ## 📋 Prerequisites
 
@@ -31,6 +50,8 @@ Before running this application, make sure you have the following installed:
 
 ## 🚀 Installation
 
+### Backend Setup
+
 1. **Clone the repository**
 
    ```bash
@@ -38,7 +59,7 @@ Before running this application, make sure you have the following installed:
    cd Student-API
    ```
 
-2. **Install dependencies**
+2. **Install backend dependencies**
 
    ```bash
    npm install
@@ -54,13 +75,35 @@ Before running this application, make sure you have the following installed:
    JWT_SECRET=your-secret-key-here
    ```
 
-4. **Start the server**
+4. **Start the backend server**
 
    ```bash
    npm start
    ```
 
    The server will start on `http://localhost:4000`
+
+### Frontend Setup
+
+1. **Navigate to frontend directory**
+
+   ```bash
+   cd frontend
+   ```
+
+2. **Install frontend dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the frontend application**
+
+   ```bash
+   npm start
+   ```
+
+   The React app will start on `http://localhost:3000`
 
 ## 📚 API Endpoints
 
@@ -148,8 +191,19 @@ Student-API/
 ├── routes/
 │   ├── api.js                  # Student routes
 │   └── userroutes.js           # User authentication routes
+├── frontend/                   # React frontend application
+│   ├── public/                 # Static files
+│   ├── src/
+│   │   ├── components/         # Reusable components
+│   │   ├── pages/              # Page components
+│   │   ├── services/           # API services
+│   │   ├── styles/             # CSS files
+│   │   ├── App.js              # Main App component
+│   │   └── index.js            # React entry point
+│   └── package.json            # Frontend dependencies
 ├── index.js                    # Main application entry point
-├── package.json                # Project dependencies
+├── package.json                # Backend dependencies
+├── README.md                   # Project documentation
 └── seedUsers.js                # Database seeding script
 ```
 
