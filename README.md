@@ -11,7 +11,7 @@ A RESTful API built with Node.js, Express, and MongoDB for managing student reco
 - **Error Handling**: Comprehensive error handling with proper HTTP status codes
 - **MongoDB Integration**: MongoDB database with Mongoose ODM
 - **Environment Configuration**: Environment variables for secure configuration
-
+ 
 ## 🛠️ Tech Stack
 
 - **Backend**: Node.js, Express.js
