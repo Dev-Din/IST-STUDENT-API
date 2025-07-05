@@ -11,7 +11,9 @@ export const register = async (req, res) => {
 
     // Validate presence
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
     }
 
     // Validate email format
@@ -21,7 +23,9 @@ export const register = async (req, res) => {
 
     // Validate password length
     if (password.length < 6) {
-      return res.status(400).json({ message: "Password must be at least 6 characters" });
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 6 characters" });
     }
 
     // Check if user already exists
@@ -38,7 +42,11 @@ export const register = async (req, res) => {
 
     res.status(201).json({
       message: "User registered successfully",
-      user: { id: savedUser._id, email: savedUser.email },
+      user: {
+        id: savedUser._id,
+        email: savedUser.email,
+        createdAt: savedUser.createdAt,
+      },
       token,
     });
   } catch (error) {
@@ -53,7 +61,9 @@ export const login = async (req, res) => {
 
     // Validate input
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
     }
 
     // Check user
@@ -72,7 +82,7 @@ export const login = async (req, res) => {
 
     res.status(200).json({
       message: "Login successful",
-      user: { id: user._id, email: user.email },
+      user: { id: user._id, email: user.email, createdAt: user.createdAt },
       token,
     });
   } catch (error) {
@@ -80,5 +90,50 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Login failed" });
   }
 };
+
+export const changePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const userId = req.user.id; // From authentication middleware
+
+    // Validate input
+    if (!currentPassword || !newPassword) {
+      return res
+        .status(400)
+        .json({ message: "Current password and new password are required" });
+    }
+
+    // Validate new password length
+    if (newPassword.length < 6) {
+      return res
+        .status(400)
+        .json({ message: "New password must be at least 6 characters" });
+    }
+
+    // Get user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Verify current password
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Current password is incorrect" });
+    }
+
+    // Update password (will be hashed in model)
+    user.password = newPassword;
+    await user.save();
+
+    res.status(200).json({
+      message: "Password updated successfully",
+    });
+  } catch (error) {
+    console.error("Change Password Error:", error);
+    res.status(500).json({ message: "Failed to update password" });
+  }
+};
+
 // Note: The generateToken function should be defined in helpers/jwtHelper.js
 // and should handle JWT creation and signing.

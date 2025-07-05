@@ -1,5 +1,6 @@
 // index.js
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import studentsRoutes from "./routes/api.js";
 import userroutes from "./routes/userroutes.js";
@@ -14,6 +15,14 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
+
+// CORS configuration
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3001"], // React development server
+    credentials: true,
+  })
+);
 
 // Middleware to parse JSON requests
 app.use(express.json());

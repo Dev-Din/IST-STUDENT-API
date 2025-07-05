@@ -7,26 +7,22 @@ import {
   updateStudent,
   deleteStudent,
 } from "../controllers/studentController.js";
+import { changePassword } from "../controllers/userController.js";
 import { authenticateToken } from "../middleware/auth.js";
 
 const routes = express.Router();
 
-// Apply authentication middleware to all student routes
+// Apply authentication middleware to all protected routes
 routes.use(authenticateToken);
 
-// Create
-routes.post("/addStudent", addStudent);
+// Student routes (RESTful)
+routes.post("/students", addStudent); // Create
+routes.get("/students", getAllStudents); // Read all
+routes.get("/students/:id", getStudentById); // Read one
+routes.put("/students/:id", updateStudent); // Update
+routes.delete("/students/:id", deleteStudent); // Delete
 
-// Read all
-routes.get("/getAllStudents", getAllStudents);
-
-// Read one
-routes.get("/getStudent/:id", getStudentById);
-
-// Update
-routes.patch("/updateStudent/:id", updateStudent);
-
-// Delete
-routes.delete("/deleteStudent/:id", deleteStudent);
+// User routes
+routes.post("/change-password", changePassword);
 
 export default routes;
