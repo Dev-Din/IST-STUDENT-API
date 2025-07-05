@@ -5,10 +5,14 @@ import {
   getAllStudents,
   getStudentById,
   updateStudent,
-  deleteStudent
+  deleteStudent,
 } from "../controllers/studentController.js";
+import { authenticateToken } from "../middleware/auth.js";
 
 const routes = express.Router();
+
+// Apply authentication middleware to all student routes
+routes.use(authenticateToken);
 
 // Create
 routes.post("/addStudent", addStudent);
