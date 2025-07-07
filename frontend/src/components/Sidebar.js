@@ -28,7 +28,12 @@ const Sidebar = ({ isOpen, onToggle }) => {
         <div className="p-3">
           {/* Logo/Brand */}
           <div className="d-flex align-items-center mb-4">
-            <i className="fas fa-graduation-cap text-white me-2 fs-4"></i>
+            <img
+              src="/sms.png"
+              alt="Student MS Logo"
+              className="me-2"
+              style={{ width: "32px", height: "32px" }}
+            />
             <h5 className="text-white mb-0">Student MS</h5>
           </div>
 

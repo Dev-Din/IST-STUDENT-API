@@ -62,10 +62,12 @@ const Register = () => {
             <div className="card shadow">
               <div className="card-body p-4">
                 <div className="text-center mb-4">
-                  <i
-                    className="fas fa-graduation-cap text-primary mb-3"
-                    style={{ fontSize: "3rem" }}
-                  ></i>
+                  <img
+                    src="/sms.png"
+                    alt="Student MS Logo"
+                    className="mb-3"
+                    style={{ width: "64px", height: "64px" }}
+                  />
                   <h2 className="card-title text-primary">Student MS</h2>
                   <p className="text-muted">Create your account</p>
                 </div>
